@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import axios from "axios";
 
 let Host = "http://localhost:4000";
@@ -36,7 +36,7 @@ const Api = {
                 url: loginUrl,
                 data: data
             }),
-    StartGame: (data) => 
+    StartGame: (data={}) => 
         axios({
             method: "POST",
             url: startGame,

@@ -1,15 +1,19 @@
 import Api from '../../middleware/api';
 import { connect } from 'react-redux';
 import ACTIONS from '../../modules/action'
+import { useState } from 'react';
 
 const Login = (props) => {
+
+    const [errors, updateErros] = useState(null);
+
     const handleSubmit = (event) => {
         // debugger;
         event.preventDefault();
         const form = event.target;
         const data = {
-            email: event.target.email.value,
-            password: event.target.password.value,
+            email: form.email.value,
+            password: form.password.value,
         }
         Api.Login(data).then(res => {
             console.log(res);
@@ -22,13 +26,25 @@ const Login = (props) => {
                 localStorage.setItem('name', res.data.results.name);
                 props.logIn({name:res.data.results.name,
                     token:res.data.token});
+                window.location.assign('/')
             }
         }).catch(err => {
-            console.log(err)
+            if(err.response){
+                    if(err.response.data.status === "FAILED"){
+                        updateErros(err.response.data);
+                    }
+            }
         })
+    }
+    const readErrors = () => {
+        if(!errors) return false;
+            return <div className="alert alert-danger" role="alert">
+                {errors.message}
+          </div>
     }
     return (
         <form onSubmit={(e)=>handleSubmit(e)}>
+            {readErrors()}
             <div className="form-group row">
                 <label htmlFor="email_address" className="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                 <div className="col-md-6">

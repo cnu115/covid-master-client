@@ -1,5 +1,5 @@
 import ACTIONS from "./action";
-import _ from "lodash";
+// import _ from "lodash";
 import Api from "../middleware/api";
 
 const player_1_name = localStorage.getItem('name');

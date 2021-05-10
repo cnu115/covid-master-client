@@ -19,9 +19,9 @@ class Game extends Component {
 
     countDownTimmer = () => {
         if (this.state.timer) {
-            const timeInterval = setInterval(() => {
+            // const timeInterval = setInterval(() => {
 
-            }, this.state.timerLimit)
+            // }, this.state.timerLimit)
         }
     }
     onConfirm = () => {
@@ -36,7 +36,7 @@ class Game extends Component {
         this.props.attack()
     }
     startGame = () => {
-        const data = {}
+        // const data = {}
         Api.StartGame().then(res => {
             console.log(res)
             if(res.data.status === "SUCCESS"){
@@ -49,7 +49,7 @@ class Game extends Component {
         // this.pastGames()
     }
     pastGames = () => {
-        const data = {}
+        // const data = {}
         Api.pastGames().then(res => {
             console.log(res)
         })

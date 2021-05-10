@@ -10,7 +10,7 @@ const Routes = (props) => {
         <Router>
             <Switch>
                 <Route path='/past-games'>
-                   <PastGames />
+                   {isLogin === "true" ? <PastGames /> : <Authentication /> }
                 </Route>
                 <Route path='/'>
                    {isLogin === "true" ? <Game /> : <Authentication /> }
