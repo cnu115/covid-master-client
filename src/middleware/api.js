@@ -1,7 +1,7 @@
 // import React from 'react';
 import axios from "axios";
 
-let Host = "http://localhost:4000";
+let Host = "https://covid-master-server.herokuapp.com";
 
 let loginUrl = `${Host}/user/login`;
 let registrationUrl = `${Host}/user/register`;
